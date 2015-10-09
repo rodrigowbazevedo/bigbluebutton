@@ -206,7 +206,7 @@ Template.slidingMenu.events
 
 Template.main.helpers
 	setTitle: ->
-		document.title = "BigBlueButton #{window.getMeetingName() ? 'HTML5'}"
+		document.title = "#{window.getMeetingName() ? 'HTML5'} | ConferenciaCorp"
 
 Template.main.rendered = ->
   $("#dialog").dialog(
