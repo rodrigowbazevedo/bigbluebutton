@@ -8,8 +8,9 @@
     	<property name="FLEX_HOME" value="${env.FLEX_HOME}" />
     	<property name="LOCALE_DIR" value="${FLEX_HOME}/frameworks/locale"/>
     	<property name="BASE_DIR" value="${basedir}" />
-      <property name="themeFile" value="BBBDefault.css"/>
+      	<property name="themeFile" value="BBBDefault.css"/>
 	    <property name="blackTheme" value="BBBBlack.css"/>
+	    <property name="conferenciaCorpTheme" value="conferenciaCorpTheme.css"/>
 	    <property name="LOCALE" value="en_US" />
 	     <property name="RESOURCES_DIR" value="${BASE_DIR}/resources" />
 	<property name="PROD_RESOURCES_DIR" value="${RESOURCES_DIR}/prod" />
@@ -92,6 +93,18 @@
 	    <sequential>
 	      <mxmlc file="${BASE_DIR}/branding/default/style/css/${blackTheme}"
 	        output="${OUTPUT_DIR}/branding/css/${blackTheme}.swf"
+	        debug="${DEBUG}"
+	        mxml.compatibility-version="3.0.0"
+	        swf-version="13"
+	        optimize="true">
+	      </mxmlc>
+	    </sequential>
+	  </target>
+
+	 <target name="conferenciaCorp" depends="init-ant-contrib">
+	    <sequential>
+	      <mxmlc file="${BASE_DIR}/branding/default/style/css/${conferenciaCorpTheme}"
+	        output="${OUTPUT_DIR}/branding/css/${conferenciaCorpTheme}.swf"
 	        debug="${DEBUG}"
 	        mxml.compatibility-version="3.0.0"
 	        swf-version="13"
@@ -516,7 +529,7 @@
 			description="Build BBB client skipping compiling of locales"/>
 	<target name="clean-build-all" depends="clean, init-ant-contrib, generate-html-wrapper, compile-deskshare-standalone, build-mic-check,
 	                                         build-cam-check, build-conn-check, build-webcam-preview-standalone, build-webcam-view-standalone,
-	                                         compile-bbb, branding, branding-black"
+	                                         compile-bbb, branding, branding-black, conferenciaCorp"
 			description="Build BBB client including locales"/>
 	<target name="modules" depends="init-ant-contrib, generate-html-wrapper, compile-deskshare-standalone,
 	                                         build-webcam-preview-standalone, build-webcam-view-standalone, compile-bbb"
